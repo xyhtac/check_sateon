@@ -6,15 +6,17 @@ parses parameters and stores them to the local cache. Device status
 returned upon each run using standard Nagios/Icinga codes. 
 
 supposed to be placed in nagios plugins directory, i.e.:
+```
 /usr/lib/nagios/plugins/check_sateon.php - CHMOD 755
+```
 
 To run this script you need to make available for http request full 
 list of field network devices and list of current hardware faults.
 
-EXPECTED FORMAT OF SATEON OUTPUT
+# EXPECTED FORMAT OF SATEON OUTPUT
 
-=== Device list ===
-
+# Device list
+```
 Address                    : 8
 BccsId                     : ff30a8ea-0162-7790-a091-67f84cc83b1c
 BoxTypeId                  : dabe4449-4646-47fe-9fcc-97df5abd91f5
@@ -34,9 +36,10 @@ PartitionId                :
 UpgradeId                  : f342168a5-cf30-5652-9a64-df686aafc7f2
 IsLinkableOutsidePartition : False
 IsSystem                   : False
+```
 
-=== Fault List ===
-
+# Fault List
+```
 Entity Type       : AccessControl.Box
 Entity Id         : 13f568a4-1423-4041-fd31-a6862dffc7af
 Property Name     : State
@@ -44,11 +47,12 @@ IsAbnormal        : True
 Value             : OffLine
 LastChanged       : 19.04.2020 10:33:45 +03:00
 AbnormalTimestamp : 19.04.2020 8:33:45 +00:00
+```
 
+# ICINGA CONFIG DEFINITIONS:
 
-ICINGA CONFIG DEFINITIONS:
-
-=== Configure host ===
+# Configure host
+```
 object Host "DOOR-2.16" {
     check_command = "check_sateon"
 	  host.vars.sateon == "True"
@@ -58,8 +62,10 @@ object Host "DOOR-2.16" {
     vars.status_log = "dc-fault-list.txt"
     vars.id_log = "dc-list.txt"
 }
+```
 
-=== Configure service ===
+# Configure service
+```
 apply Service "sateon_device" {
     display_name = "Device status"
     import "generic-service"
@@ -72,8 +78,10 @@ apply Service "sateon_device" {
     vars.id_log = "dc-list.txt"
     vars.device_id = host.name
 }
+```
 
-=== Configure Command ===
+# Configure Command
+```
 object CheckCommand "check_sateon" {
     import "plugin-check-command"
     command = [ PluginDir + "/check_sateon.php" ]
@@ -86,3 +94,22 @@ object CheckCommand "check_sateon" {
     		"--device" = "$device_id$"
     }
 }
+```
+## License
+
+check_sateon is licensed under the [MIT](https://www.mit-license.org/) license for all open source applications.
+
+## Bugs and feature requests
+
+If you find a bug, please report it [here on Github](https://github.com/xyhtac/check_sateon/issues).
+
+Guidelines for bug reports:
+
+1. Use the GitHub issue search — check if the issue has already been reported.
+2. Check if the issue has been fixed — try to reproduce it using the latest master or development branch in the repository.
+3. Isolate the problem — create a reduced test case and a live example. 
+
+A good bug report shouldn't leave others needing to chase you up for more information.
+Please try to be as detailed as possible in your report.
+
+Feature requests are welcome. Please look for existing ones and use GitHub's "reactions" feature to vote.
