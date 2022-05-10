@@ -1,6 +1,9 @@
 # check_sateon
 Nagios/Icinga plugin for checking SATEON field network device status
 
+Max.Fischer <dev@monologic.ru>
+Tested on CentOS GNU/Linux 6.5 with Icinga r2.6.3-1
+
 Script fetches device_list and fault_list from SATEON server via http,
 parses parameters and stores them to the local cache. Device status 
 returned upon each run using standard Nagios/Icinga codes. 
@@ -8,6 +11,11 @@ returned upon each run using standard Nagios/Icinga codes.
 supposed to be placed in nagios plugins directory, i.e.:
 ```
 /usr/lib/nagios/plugins/check_sateon.php - CHMOD 755
+```
+
+Usage example:
+```
+./check_sateon.php --hostname 10.0.1.1 --status-dc dc-fault-list.txt --list-dc dc-list.txt --device DOOR-2.14
 ```
 
 To run this script you need to make available for http request full 
