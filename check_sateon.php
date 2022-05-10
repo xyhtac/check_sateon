@@ -90,8 +90,8 @@
 
 # default values for externally definable parameters 
 
-$cfg['cache'] = "/tmp";						# local cache storage. Must be readable and writable for nagios user.
-$cfg['status-dc'] = "dc-fault-list.txt";	# filename of fault list on remote SATEON (http) server.
+$cfg['cache'] = "/tmp";					# local cache storage. Must be readable and writable for nagios user.
+$cfg['status-dc'] = "dc-fault-list.txt";		# filename of fault list on remote SATEON (http) server.
 $cfg['list-dc'] = "dc-list.txt";			# filename of device list on remote SATEON (http).
 $cfg['hostname'] = "10.0.0.10";				# remote SATEON (http) hostname or ip.
 $cfg['cache-lifetime'] = 300;				# local cache lifetime in seconds.
