@@ -1,6 +1,10 @@
 #!/usr/bin/php
 <?php
-# Check SATEON Device Status
+
+# Icinga Plugin Script (Check Command). Check SATEON field device Status.
+#
+# Max.Fischer <dev@monologic.ru>
+# Tested on CentOS GNU/Linux 6.5 with Icinga r2.6.3-1
 
 # Script fetches device_list and fault_list from SATEON server via http,
 # parses parameters and stores them to the local cache. Device status 
@@ -8,6 +12,9 @@
 
 # supposed to be placed in nagios plugins directory, i.e.:
 # /usr/lib/nagios/plugins/check_sateon.php - CHMOD 755
+
+# Usage example:
+# ./check_sateon.php --hostname 10.0.1.1 --status-dc dc-fault-list.txt --list-dc dc-list.txt --device DOOR-2.14
 
 # To run this script you need to make available for http request full 
 # list of field network devices and list of current hardware faults.
@@ -51,13 +58,13 @@
 #
 # === Configure host ===
 # object Host "DOOR-2.16" {
-#    check_command = "check_sateon"
+#        check_command = "check_sateon"
 #	 host.vars.sateon == "True"
-#    vars.hostname = "10.0.0.10"
-#    vars.username = "spectator"
-#    vars.password = "secret_password"
-#    vars.status_log = "dc-fault-list.txt"
-#    vars.id_log = "dc-list.txt"
+#        vars.hostname = "10.0.0.10"
+#        vars.username = "spectator"
+#        vars.password = "secret_password"
+#        vars.status_log = "dc-fault-list.txt"
+#        vars.id_log = "dc-list.txt"
 # }
 #
 # === Configure service ===
@@ -66,11 +73,11 @@
 #	import "generic-service"
 #	check_command = "check_sateon"
 #	assign where host.vars.sateon == "True"
-#   vars.hostname = "10.0.0.10"
-#   vars.username = "spectator"
-#   vars.password = "secret_password"
-#   vars.status_log = "dc-fault-list.txt"
-#   vars.id_log = "dc-list.txt"
+#       vars.hostname = "10.0.0.10"
+#       vars.username = "spectator"
+#       vars.password = "secret_password"
+#       vars.status_log = "dc-fault-list.txt"
+#       vars.id_log = "dc-list.txt"
 #	vars.device_id = host.name
 # }
 #
