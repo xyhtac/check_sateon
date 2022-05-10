@@ -13,9 +13,9 @@ supposed to be placed in nagios plugins directory, i.e.:
 To run this script you need to make available for http request full 
 list of field network devices and list of current hardware faults.
 
-# EXPECTED FORMAT OF SATEON OUTPUT
+## Expected format of SATEON output
 
-# Device list
+### Device list
 ```
 Address                    : 8
 BccsId                     : ff30a8ea-0162-7790-a091-67f84cc83b1c
@@ -38,7 +38,7 @@ IsLinkableOutsidePartition : False
 IsSystem                   : False
 ```
 
-# Fault List
+### Fault List
 ```
 Entity Type       : AccessControl.Box
 Entity Id         : 13f568a4-1423-4041-fd31-a6862dffc7af
@@ -49,13 +49,13 @@ LastChanged       : 19.04.2020 10:33:45 +03:00
 AbnormalTimestamp : 19.04.2020 8:33:45 +00:00
 ```
 
-# ICINGA CONFIG DEFINITIONS:
+## Icinga Configuration Definitions
 
-# Configure host
+### Configure host
 ```
 object Host "DOOR-2.16" {
     check_command = "check_sateon"
-	  host.vars.sateon == "True"
+	host.vars.sateon == "True"
     vars.hostname = "10.0.0.10"
     vars.username = "spectator"
     vars.password = "secret_password"
@@ -64,7 +64,7 @@ object Host "DOOR-2.16" {
 }
 ```
 
-# Configure service
+### Configure service
 ```
 apply Service "sateon_device" {
     display_name = "Device status"
@@ -80,7 +80,7 @@ apply Service "sateon_device" {
 }
 ```
 
-# Configure Command
+### Configure Command
 ```
 object CheckCommand "check_sateon" {
     import "plugin-check-command"
