@@ -55,7 +55,7 @@ AbnormalTimestamp : 19.04.2020 8:33:45 +00:00
 ```
 object Host "DOOR-2.16" {
     check_command = "check_sateon"
-	host.vars.sateon == "True"
+    host.vars.sateon == "True"
     vars.hostname = "10.0.0.10"
     vars.username = "spectator"
     vars.password = "secret_password"
@@ -87,11 +87,11 @@ object CheckCommand "check_sateon" {
     command = [ PluginDir + "/check_sateon.php" ]
     arguments = {
         "--hostname" = "$hostname$"
-    		"--username" = "$username$"
-    		"--password" = "$password$"
-    		"--status-dc" = "$status_log$"
-    		"--list-dc" = "$id_log$"
-    		"--device" = "$device_id$"
+    	"--username" = "$username$"
+    	"--password" = "$password$"
+    	"--status-dc" = "$status_log$"
+    	"--list-dc" = "$id_log$"
+    	"--device" = "$device_id$"
     }
 }
 ```
