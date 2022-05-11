@@ -55,11 +55,12 @@
 
 
 # ICINGA CONFIG DEFINITIONS:
+# use 'sateon-config-generator.php' for automated config creation. 
 #
-# === Configure host ===
-# object Host "DOOR-2.16" {
+# === Configure host template ===
+# template Host "sateon-host" {
 #        check_command = "check_sateon"
-#	 host.vars.sateon == "True"
+#	 host.vars.sateon = "True"
 #        vars.hostname = "10.0.0.10"
 #        vars.username = "spectator"
 #        vars.password = "secret_password"
@@ -67,7 +68,13 @@
 #        vars.id_log = "dc-list.txt"
 # }
 #
-# === Configure service ===
+# === Configure host ===
+# object Host "DOOR-2.16" {
+#	 import "sateon-host"
+#	 vars.description = "SATEON panel $dcname"
+# }
+#
+# === Configure service (more options) ===
 # apply Service "sateon_device" {
 #	display_name = "Device status"
 #	import "generic-service"
