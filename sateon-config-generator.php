@@ -36,6 +36,7 @@ object CheckCommand "check_sateon" {
 }
 
 template Host "sateon-host" {
+	check_command = "check_sateon"
 	vars.hostname = "$cfg['hostname']"
 	vars.username = "$cfg['username']"
 	vars.password = "$cfg['password']"
@@ -62,7 +63,6 @@ foreach ($cachedata as &$line) {
 		
 		$config_line = <<<EOL
 object Host "$dcname" {
-	check_command = "check_sateon"
 	import "sateon-host"
 	vars.description = "SATEON panel $dcname"
 }
