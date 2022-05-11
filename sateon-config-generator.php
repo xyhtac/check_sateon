@@ -41,6 +41,7 @@ template Host "sateon-host" {
 	vars.password = "$cfg['password']"
 	vars.status_dc = "$cfg['status-dc']"
 	vars.list_dc = "$cfg['list-dc']"
+	host.vars.sateon = "True"
 	vars.type = "Controller"
 }
 
