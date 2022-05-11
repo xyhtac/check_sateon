@@ -21,9 +21,30 @@ $cfg['password'] = "secret_password";
 $n = 0;
 $i = 0;
 $cachedata = "";
-$config = "";
+$config = <<<EOL
+object CheckCommand "check_sateon" {
+	import "plugin-check-command"
+	command = [ PluginDir + "/check_sateon.php" ]
+	arguments = {
+		"--hostname" = "\$hostname\$"
+		"--username" = "\$username\$"
+		"--password" = "\$password\$"
+		"--status-dc" = "\$status_log\$"
+		"--list-dc" = "\$id_log\$"
+		"--device" = "\$device_id\$"
+	}
+}
 
+template Host "sateon-host" {
+	vars.hostname = "$cfg['hostname']"
+	vars.username = "$cfg['username']"
+	vars.password = "$cfg['password']"
+	vars.status_dc = "$cfg['status-dc']"
+	vars.list_dc = "$cfg['list-dc']"
+	vars.type = "Controller"
+}
 
+EOL;
 
 # compose cache url
 $deviceIDcache = $cfg['cache']."/".$cfg['list-dc'];
@@ -41,15 +62,9 @@ foreach ($cachedata as &$line) {
 		$config_line = <<<EOL
 object Host "$dcname" {
 	check_command = "check_sateon"
-	vars.hostname = "$cfg['hostname']"
-	vars.username = "$cfg['username']"
-	vars.password = "$cfg['password']"
-	vars.status_dc = "$cfg['status-dc']"
-	vars.list_dc = "$cfg['list-dc']"
-	vars.type = "Controller"
+	import "sateon-host"
 	vars.description = "SATEON panel $dcname"
 }
-
 EOL;
 		$config = $config.$config_line;
 	}
@@ -59,6 +74,5 @@ EOL;
 $configname = $cfg['cache']."/".$cfg['config-file'];
 
 file_put_contents($configname, $config);
-
 
 ?>
