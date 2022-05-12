@@ -332,7 +332,7 @@ if ( file_exists($faultCache) && time() - filemtime($faultCache) < $cfg['cache-l
 
 if ($dc_fault) {
 	# report cache operations for debug purposes.
-	echo " C[".$log['cache-id']."-".$log['cache-fault']."] ";
+	# echo " C[".$log['cache-id']."-".$log['cache-fault']."] ";
 	
 	# die and report CRITICAL
 	exit(STATUS_CRITICAL);
@@ -341,7 +341,7 @@ if ($dc_fault) {
 	echo "No faults found.";
 	
 	# report cache operations for debug purposes.
-	echo " C[".$log['cache-id']."-".$log['cache-fault']."] ";
+	# echo " C[".$log['cache-id']."-".$log['cache-fault']."] ";
 	
 	# die and report OK
 	exit(STATUS_OK);
