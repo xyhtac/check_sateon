@@ -301,18 +301,16 @@ if ( file_exists($faultCache) && time() - filemtime($faultCache) < $cfg['cache-l
 	# iterate throught faulted ids
 	foreach ($identities as &$idstr) {
 		
-		# clean current id
+		# preserve and clean log data
 		$idstr = cleanVar($idstr);
+		$dcstatus = cleanVar($lines[4][$n]);
+		$faulttime = cleanVar($lines[5][$n]);
+			
+		# append cache output data
+		$cachedata = $cachedata.$idstr."|".$dcstatus."|".$faulttime."\n";
 		
 		# if device ID found in fault list
 		if ($cfg['device'] == $device[$idstr]) {
-			
-			# preserve and clean log data
-			$dcstatus = cleanVar($lines[4][$n]);
-			$faulttime = cleanVar($lines[5][$n]);
-			
-			# append cache output data
-			$cachedata = $cachedata.$idstr."|".$dcstatus."|".$faulttime."\n";
 			
 			# print error contents
 			echo "Device status is $dcstatus. Event time $faulttime. SystemID: $idstr";
