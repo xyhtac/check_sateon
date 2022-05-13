@@ -24,6 +24,8 @@ list of field network devices and list of current hardware faults.
 ## Expected format of SATEON output
 
 ### Device list
+result of scheduled execution of 'export_list-dc.ps1'
+
 ```
 Address                    : 8
 BccsId                     : ff30a8ea-0162-7790-a091-67f84cc83b1c
@@ -47,6 +49,8 @@ IsSystem                   : False
 ```
 
 ### Fault List
+result of scheduled execution of 'export_status-dc.ps1'
+
 ```
 Entity Type       : AccessControl.Box
 Entity Id         : 13f568a4-1423-4041-fd31-a6862dffc7af
@@ -58,6 +62,7 @@ AbnormalTimestamp : 19.04.2020 8:33:45 +00:00
 ```
 
 ## Icinga Configuration Definitions
+use 'sateon-config-generator.php' to generate Icinga configuration
 
 ### Configure host
 ```
