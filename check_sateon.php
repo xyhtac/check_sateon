@@ -20,7 +20,7 @@
 # list of field network devices and list of current hardware faults.
 
 # EXPECTED FORMAT OF SATEON OUTPUT
-#
+# result of scheduled execution of 'export_list-dc.ps1'
 # === Device list ===
 #
 # Address                    : 8
@@ -43,6 +43,7 @@
 # IsLinkableOutsidePartition : False
 # IsSystem                   : False
 
+# result of scheduled execution of 'export_status-dc.ps1'
 # === Fault List ===
 # 
 # Entity Type       : AccessControl.Box
@@ -55,7 +56,7 @@
 
 
 # ICINGA CONFIG DEFINITIONS:
-# use 'sateon-config-generator.php' for automated config creation. 
+# use 'sateon-config-generator.php' to generate Icinga configuration
 #
 # === Configure host template ===
 # template Host "sateon-host" {
