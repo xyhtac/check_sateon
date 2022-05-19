@@ -131,7 +131,7 @@ $log['cache-fault'] = 0;
 
 # Step 1. Extract vars from command line
 
-# extract parameters from command line to $cfg[]
+# extract parameters from command line to $cfg
 foreach ($argv as &$val) {
 	if (preg_match("/\-\-/", $val) && $argv[$i+1] && !preg_match("/\-\-/", $argv[$i+1]) ) {
 		$varvalue = $argv[$i+1];
@@ -180,7 +180,7 @@ if ( file_exists($deviceIDcache) && time() - filemtime($deviceIDcache) < $cfg['c
 		}
 	}
 } else {
-	# Step 3. Not using cache. Get SystemID List from remote server.
+	# Step 3. Not using cache. Get SystemID List from remote server. 
 
 	# get device list from remote server
 	$devicelist = getContent( $cfg['hostname'], $cfg['list-dc'], $cfg['username'], $cfg['password']);
