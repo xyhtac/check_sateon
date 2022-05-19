@@ -131,7 +131,7 @@ $log['cache-fault'] = 0;
 
 # Step 1. Extract vars from command line
 
-# extract parameters from command line to $cfg
+# extract parameters from command line to $cfg[]
 foreach ($argv as &$val) {
 	if (preg_match("/\-\-/", $val) && $argv[$i+1] && !preg_match("/\-\-/", $argv[$i+1]) ) {
 		$varvalue = $argv[$i+1];
