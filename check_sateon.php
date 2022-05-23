@@ -284,11 +284,11 @@ if ( file_exists($faultCache) && time() - filemtime($faultCache) < $cfg['cache-l
 	# get fault list from remote server
 	$faultlist = getContent( $cfg['hostname'], $cfg['status-dc'], $cfg['username'], $cfg['password']);
 	
-	
-	#if (!$faultlist) { 
-	#	echo "Can't get fault list from server";
-	#	exit(STATUS_UNKNOWN);
-	#}
+	# if remote server returned 0, die with UNKNOWN status
+	if (!$faultlist) { 
+		echo "Can't get fault list from server";
+		exit(STATUS_UNKNOWN);
+	}
 
 	# fix encoding to UTF-8
 	$faultlist = mb_convert_encoding($faultlist, 'UTF-8', 'UCS-2LE');
