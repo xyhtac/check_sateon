@@ -4,7 +4,7 @@ Nagios/Icinga plugin for checking SATEON field network device status
 Max.Fischer <dev@monologic.ru>
 Tested on CentOS GNU/Linux 6.5 with Icinga r2.6.3-1
 
-![Icinga Plugin - Sateon Host Checks](/icinga_example.png?raw=true "Icinga Plugin - Sateon Host Checks")
+![Icinga Plugin - Sateon Host Checks](/icinga-example.png?raw=true "Icinga Plugin - Sateon Host Checks")
 
 Script fetches device_list and fault_list from SATEON server via http,
 parses parameters and stores them to the local cache. Device status 
