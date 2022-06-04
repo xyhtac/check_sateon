@@ -143,7 +143,7 @@ foreach ($argv as &$val) {
 
 # Throw error if device ID was not specified in the input
 if (!$cfg['device']) { 
-		echo "No Device ID Specified. Can't run.";
+		echo "No Device ID specified. Can't run.";
 		exit(STATUS_UNKNOWN);
 }
 
@@ -372,6 +372,5 @@ function getContent ($host, $path, $username, $password) {
 	}
 	return $data;
 }
-
 
 ?>
