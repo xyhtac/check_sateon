@@ -26,7 +26,7 @@
 # Address                    : 8
 # BccsId                     : ff30a8ea-0162-7790-a091-67f84cc83b1c
 # BoxTypeId                  : dabe4449-4646-47fe-9fcc-97df5abd91f5
-# Comment                    : 
+# Comment                    : LH-01
 # Description                : DOOR-2.16
 # Interlock                  : False
 # LineId                     : 6778da32-8730-4801-be5c-0e854407f14d
