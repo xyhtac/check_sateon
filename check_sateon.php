@@ -99,7 +99,7 @@
 #		"--password" = "$password$"
 #		"--status-dc" = "$status_log$"
 #		"--list-dc" = "$id_log$"
-#		"--device" = "$device_id$"
+#		"--device" = "$host.name$"
 #	}
 #}
 
