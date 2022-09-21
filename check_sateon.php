@@ -193,6 +193,9 @@ if ( file_exists($deviceIDcache) && time() - filemtime($deviceIDcache) < $cfg['c
 
 	# fix encoding to UTF-8
 	$devicelist = mb_convert_encoding($devicelist, 'UTF-8', 'UCS-2LE');
+	
+	# fix formatting: remove repeating tabs
+	$devicelist = preg_replace("/\r\n\s{3,}/", "", $devicelist);
 
 	# parse device list to array using pattern
 	preg_match_all('/Description\s+:(.+?)\nInterlock\s+:(.+?)\nLineId\s+:(.+?)\nMainsFailurePeriod\s+:(.+?)\nPoll\s+:(.+?)\nTimeZoneId\s+:(.+?)\nIdentity\s+:(.+?)\n/', $devicelist, $lines, PREG_PATTERN_ORDER);
