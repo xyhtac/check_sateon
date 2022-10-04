@@ -2,7 +2,7 @@
 <?php
 
 # Icinga Plugin Script (Check Command). Check SATEON field device Status.
-#
+# https://github.com/xyhtac/check_sateon
 # Max.Fischer <dev@monologic.ru>
 # Tested on CentOS GNU/Linux 6.5 with Icinga r2.6.3-1
 
