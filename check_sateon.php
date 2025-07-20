@@ -4,7 +4,7 @@
 # Icinga Plugin Script (Check Command). Check SATEON field device Status.
 # https://github.com/xyhtac/check_sateon
 # Max.Fischer <dev@monologic.ru>
-# Tested on CentOS GNU/Linux 6.5 with Icinga r2.6.3-1
+# Tested with Debian GNU/Linux 12 (bookworm) with Icinga v2.14.6
 
 # Script fetches device_list and fault_list from SATEON server via http,
 # parses parameters and stores them to the local cache. Device status 
